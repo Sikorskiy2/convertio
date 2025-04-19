@@ -15,23 +15,25 @@ class Practicum {
         int daysBeforeSalary = scanner.nextInt(); // считали число типа int
 
         System.out.println("Введите команду. Доступные команды: convert и advice.");
-        String command = ...; // // вместо многоточия используйте нужный метод класса Scanner
+        String command = scanner.next(); // // вместо многоточия используйте нужный метод класса Scanner
 
-        if (...) { // сравните переменную command с командой для конвертации
+        if (command.equals("convert")) { // сравните переменную command с командой для конвертации
             System.out.println("В какую валюту хотите конвертировать рубли? Доступные варианты: USD, EUR, CNY.");
-            String currency = ...; // считайте это значение с помощью scanner
+            String currency = scanner.next(); // считайте это значение с помощью scanner
 
-            if (...) { // определите, какой был введён код валюты 
+            if (currency.equals("USD")) { // определите, какой был введён код валюты 
                 // выведите результат конвертации
-                System.out.println("Ваши сбережения в долларах: " + ...);
-            } else if (...) {
-                System.out.println("Ваши сбережения в евро: " + ...);
-            } else if (...) {
-                System.out.println("Ваши сбережения в юанях: " + ...);
-            } 
+                System.out.println("Ваши сбережения в долларах: " + (moneyBeforeSalary / rateUSD));
+            } else if (currency.equals("EUR")) {
+                System.out.println("Ваши сбережения в евро: " + (moneyBeforeSalary / rateEUR));
+            } else if (currency.equals("CNY")) {
+                System.out.println("Ваши сбережения в юанях: " + (moneyBeforeSalary / rateCNY));
+            } else {
+                System.out.println("Введена неизвестная валюта.");
+            }
              // не забудьте обработать случай, когда введён некорректный код валюты
 
-        } else if (...) { // сравните переменную command с командой для советника
+        } else if (command.equals("advice")) { // сравните переменную command с командой для советника
             if (moneyBeforeSalary < 3000) {
                 System.out.println("Сегодня лучше поесть дома. Экономьте, и вы дотянете до зарплаты!");
             } else if (moneyBeforeSalary < 10000) {
@@ -54,6 +56,8 @@ class Practicum {
                 }
             }
         }
-        // не забудьте обработать случай, когда нужной команды нет
+      else {
+        System.out.println("Введена неизвестная команда.");
+      }  // не забудьте обработать случай, когда нужной команды нет
     }
 }
